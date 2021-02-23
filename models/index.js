@@ -12,7 +12,7 @@ const firebaseConfig = {
   measurementId: "G-EHJ2YWJC9X"
 };
 const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
-  host: dbConfig.HOST,
+  // host: dbConfig.HOST,
   dialect: dbConfig.dialect,
   pool: {
     max: dbConfig.pool.max,
@@ -20,9 +20,9 @@ const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
     acquire: dbConfig.pool.acquire,
     idle: dbConfig.pool.idle
   },
-  // dialectOptions:{
-  //   socketPath: `/cloudsql/${dbConfig.dialectOptions.CLOUD_SQL_CONNECTION_NAME}`
-  //   }
+  dialectOptions:{
+    socketPath: `/cloudsql/${dbConfig.dialectOptions.CLOUD_SQL_CONNECTION_NAME}`
+    }
 });
 
 const db = {};
