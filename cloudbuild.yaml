@@ -1,0 +1,21 @@
+steps:
+
+  # Install node packages
+  # - name: "gcr.io/cloud-builders/npm:latest"
+  #   args: ["install"]
+  - name: gcr.io/cloud-builders/npm
+    args: [ install ]
+    dir: "/"
+
+  # Build production package
+  # - name: "gcr.io/firm-buffer-305323/"
+  #   args: ["build", "--prod"]
+  #   dir: "front"
+  # - name: gcr.io/cloud-builders/npm
+  #   args: [ run, build, --prod ]
+  #   dir: "/"
+
+  # Deploy to google cloud app engine
+  - name: "gcr.io/cloud-builders/gcloud"
+    args: ["app", "deploy", "--version=prod"]
+    # dir: "front"
